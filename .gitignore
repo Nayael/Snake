@@ -5,6 +5,8 @@ bin/
 ## FlashDevelop
 ############
 *.as3proj
+*.old
+*.xml
 
 ############
 ## Windows
