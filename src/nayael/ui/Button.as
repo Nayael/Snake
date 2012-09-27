@@ -1,8 +1,10 @@
 package nayael.ui 
 {
+	import flash.display.BlendMode;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.MouseEvent;
 	import nayael.utils.IDisplayObject;
 	import nayael.utils.Text;
 	
@@ -21,20 +23,60 @@ package nayael.ui
 	//
 		public function Button() {
 			var background:Shape = new Shape(),
+				line:Shape = new Shape(),
 				text:Text = new Text('Play', 16, 0x000000, true);
-			background.graphics.beginFill(0xCCCCCC);
+			background.graphics.beginFill(0xAAAAAA);
 			background.graphics.drawRect(0, 0, 100, 40);
 			background.graphics.endFill();
 			addChild(background);
 			
+			line.graphics.lineStyle(3, 0xEEEEEE);
+			line.graphics.lineTo(100, 0);
+			line.graphics.lineTo(100, 40);
+			line.graphics.lineTo(0, 40);
+			line.graphics.lineTo(0, 0);
+			addChild(line);
+			
 			text.hCenter(background);
 			text.vCenter(background);
 			addChild(text);
+			
+			this.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+			this.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 		}
 		
 	////////////////////////
 	// METHODS
 	//
+		private function onMouseOver(e:MouseEvent):void {
+			this.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+			var background:Shape = new Shape();
+			background.graphics.beginFill(0xCCCCCC);
+			background.graphics.drawRect(0, 0, 100, 40);
+			background.graphics.endFill();
+			removeChildAt(0);
+			addChildAt(background, 0);
+		}
+		
+		private function onMouseOut(e:MouseEvent):void {
+			this.removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+			var background:Shape = new Shape();
+			background.graphics.beginFill(0xAAAAAA);
+			background.graphics.drawRect(0, 0, 100, 40);
+			background.graphics.endFill();
+			removeChildAt(0);
+			addChildAt(background, 0);
+		}
+		
+		private function onMouseDown(e:MouseEvent):void {
+			var background:Shape = new Shape();
+			background.graphics.beginFill(0x888888);
+			background.graphics.drawRect(0, 0, 100, 40);
+			background.graphics.endFill();
+			removeChildAt(0);
+			addChildAt(background, 0);
+		}
+		
 		////////////////////////
 		// IDisplayObject methods
 		/**

@@ -1,7 +1,9 @@
 package nayael
 {
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import mx.core.FlexSimpleButton;
 	import nayael.ui.Button;
 	
@@ -45,7 +47,17 @@ package nayael
 			startBt.hCenter(stage);
 			startBt.y = 170;
 			this.addChild(startBt);
-			
+			startBt.addEventListener(MouseEvent.CLICK, startGame);
+		}
+		
+		/**
+		 * Starts the game
+		 * @param	e	MouseEvent_CLICK
+		 */
+		private function startGame(e:MouseEvent):void {
+			removeChild(e.currentTarget as DisplayObject);
+			removeChild(_textFields[0]);
+			removeChild(_textFields[1]);
 		}
 		
 	////////////////////////
