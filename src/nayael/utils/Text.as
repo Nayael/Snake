@@ -16,6 +16,8 @@ package nayael.utils
 	////////////////////////
 	// PROPERTIES
 	//
+	[Embed(systemFont="Comic Book", fontFamily="Comic Book Normal", fontName="ComicBook", mimeType='application/x-font-truetype', embedAsCFF="false", unicodeRange="U+0020-007E")]
+		private static var comicFont:Class;
 		
 	////////////////////////
 	// CONSTRUCTOR
@@ -23,16 +25,17 @@ package nayael.utils
 		/** [Constructor]
 		 * A label text field
 		 * @param	initText Le texte
-		 * @param	font La police du texte
 		 * @param	size La taille du texte
 		 * @param	color La couleur du texte\n0xFF0000 est le rouge, 0x00FF00 est le vert, etc.
 		 * @param	bold Indique si le texte est en gras ou non
 		 * @param	italic Indique si le texte est en italique ou non
 		 */
-		public function Text(initText:String, font:String = 'Arial', size:int = 24, color:Object = 0xFFFFFF, bold:Boolean = false, italic:Boolean = false) {
+		public function Text(initText:String, size:int = 24, color:Object = 0xFFFFFF, bold:Boolean = false, italic:Boolean = false) {
 			text = initText;
-			var textFormat:TextFormat = new TextFormat(font, size, color, bold, italic);
+			var textFormat:TextFormat = new TextFormat('ComicBook', size, color, bold, italic);
+			
 			textFormat.align = TextFormatAlign.LEFT;
+			this.embedFonts = true;
 			this.autoSize = TextFieldAutoSize.LEFT;
 			this.antiAliasType = AntiAliasType.ADVANCED;
 			this.setTextFormat(textFormat);

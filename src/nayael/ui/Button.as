@@ -21,7 +21,7 @@ package nayael.ui
 	//
 		public function Button() {
 			var background:Shape = new Shape(),
-				text:Text = new Text('Play', 'Arial', 16, 0x000000, true);
+				text:Text = new Text('Play', 16, 0x000000, true);
 			background.graphics.beginFill(0xCCCCCC);
 			background.graphics.drawRect(0, 0, 100, 40);
 			background.graphics.endFill();

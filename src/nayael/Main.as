@@ -33,7 +33,7 @@ package nayael
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			// The texts on the main menu
-			_textFields = new Array(new Text('The Snake', 'Arial', 24, 0xFFFFFF, true), new Text('By Nayael', 'Arial', 10));
+			_textFields = new Array(new Text('The Snake', 24, 0xFFFFFF, true), new Text('By Nayael', 10));
 			_textFields[0].hCenter(stage);
 			_textFields[0].y = 50;
 			this.addChild(_textFields[0]);
