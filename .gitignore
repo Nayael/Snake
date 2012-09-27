@@ -1,0 +1,17 @@
+# Binary files
+bin/
+
+############
+## FlashDevelop
+############
+*.as3proj
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
