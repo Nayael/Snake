@@ -80,6 +80,7 @@ package nayael
 			}
 			addApple();	// We add the first apple for the snake to eat
 			
+			stage.focus = null;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			_mainTimer.addEventListener(TimerEvent.TIMER, gameLoop);
 			_mainTimer.start();
@@ -119,9 +120,11 @@ package nayael
 			}
 			
 			// We check if the snake's head touches an other part of the snake
-			//for each (var item:Shape in _snake.body) {
-				//
-			//}
+			for each (var item:Shape in _snake.body) {
+				if (item != _snake.body[0] && _snake.body[0].x == item.x && _snake.body[0].y == item.y) {
+					stopGame();
+				}
+			}
 			
 			// If the snake's head goes out of the stage, the player loses
 			if (_snake.body[0].x <= 0 || _snake.body[0].x >= 400 || _snake.body[0].y <= 0 || _snake.body[0].y >= 300) {
