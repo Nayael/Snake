@@ -21,10 +21,10 @@ package nayael.ui
 	////////////////////////
 	// CONSTRUCTOR
 	//
-		public function Button() {
+		public function Button(pText:String) {
 			var background:Shape = new Shape(),
 				line:Shape = new Shape(),
-				text:Text = new Text('Play', 16, 0x000000, true);
+				text:Text = new Text(pText, 16, 0x000000, true);
 			background.graphics.beginFill(0xAAAAAA);
 			background.graphics.drawRect(0, 0, 100, 40);
 			background.graphics.endFill();
