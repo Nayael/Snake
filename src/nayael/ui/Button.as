@@ -119,11 +119,5 @@ package nayael.ui
 		public function remove():void {
 			this.parent.removeChild(this);
 		}
-		
-	////////////////////////
-	// GETTERS & SETTERS
-	//
-		
 	}
-	
 }

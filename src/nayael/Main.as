@@ -114,7 +114,7 @@ package nayael
 		 */
 		private function gameLoop(e:TimerEvent):void {
 			// If the snake's head touches the apple
-			if (_snake.body[0].hitTestObject(getChildAt(numChildren - 1))) {
+			if (getChildAt(numChildren - 1).hitTestPoint(_snake.body[0].x + 7.5, _snake.body[0].y + 7.5)) {
 				_snake.eat(getChildAt(numChildren - 1) as Shape, removeChild, addChild);
 				addApple();
 			}
@@ -127,7 +127,7 @@ package nayael
 			}
 			
 			// If the snake's head goes out of the stage, the player loses
-			if (_snake.body[0].x <= 0 || _snake.body[0].x >= 400 || _snake.body[0].y <= 0 || _snake.body[0].y >= 300) {
+			if (_snake.body[0].x < 0 || _snake.body[0].x > stage.stageWidth || _snake.body[0].y < 0 || _snake.body[0].y > stage.stageHeight) {
 				stopGame();
 			}
 			
@@ -144,12 +144,16 @@ package nayael
 			apple.graphics.endFill();
 			
 			// Randomly position the apple
-			var appleX:Number = 7.5 + Math.random() * 380,
-				appleY:Number = 7.5 + Math.random() * 280;
+			var randomX:Number = (0 + Math.random() * ((Math.floor(stage.stageWidth / 15) - 1) * 15)),
+				randomY:Number = (0 + Math.random() * ((Math.floor(stage.stageHeight / 15) - 1) * 15)),
+				appleX:Number = Math.floor(randomX / 15) * 15,
+				appleY:Number = Math.floor(randomY / 15) * 15;
 			for (var i:int = 0; i < _snake.body.length; i++) {
 				if (_snake.body[i].hitTestPoint(appleX, appleY)) {	// If one of the bit collides with the new positions
-					appleX = 7.5 + Math.random() * 380;
-					appleY = 7.5 + Math.random() * 280;
+					randomX = (0 + Math.random() * ((Math.floor(stage.stageWidth / 15) - 1) * 15));
+					randomY = (0 + Math.random() * ((Math.floor(stage.stageHeight / 15) - 1) * 15));
+					appleX = Math.floor(randomX / 15) * 15;
+					appleY = Math.floor(randomY / 15) * 15;
 					i = 0;	// We restart the iteration, to recheck with the new coordinates
 				}
 			}
@@ -192,11 +196,5 @@ package nayael
 				startGame();
 			}
 		}
-		
-	////////////////////////
-	// GETTERS & SETTERS
-	//
-		
 	}
-	
 }

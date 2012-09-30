@@ -47,8 +47,8 @@ package nayael.characters
 				bit.graphics.beginFill(0xFFFFFF);
 				bit.graphics.drawRect(0, 0, 15, 15);
 				bit.graphics.endFill();
-				bit.x = 200;
-				bit.y = 157.5 - (i * 15);
+				bit.x = 195;
+				bit.y = 150 - (i * 15);
 				_body[i] = bit;
 			}
 		}

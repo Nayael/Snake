@@ -87,10 +87,5 @@ package nayael.utils
 		public function remove():void {
 			this.parent.removeChild(this);
 		}
-		
-	////////////////////////
-	// GETTERS & SETTERS
-	//
-		
 	}
 }
