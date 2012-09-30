@@ -127,7 +127,7 @@ package nayael
 			}
 			
 			// If the snake's head goes out of the stage, the player loses
-			if (_snake.body[0].x < 0 || _snake.body[0].x > stage.stageWidth || _snake.body[0].y < 0 || _snake.body[0].y > stage.stageHeight) {
+			if (_snake.body[0].x < 0 || _snake.body[0].x >= stage.stageWidth - 10 || _snake.body[0].y < 0 || _snake.body[0].y > stage.stageHeight) {
 				stopGame();
 			}
 			
