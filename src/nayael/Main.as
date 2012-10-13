@@ -24,7 +24,7 @@ package nayael
 	////////////////////////
 	// PROPERTIES
 	//
-		private var _textFields:Array;
+		private var _textFields:Vector.<Text>;
 		private var _mainTimer:Timer;
 		private var _snake:Snake;
 	
@@ -48,7 +48,9 @@ package nayael
 			_snake = Snake.getInstance();
 			
 			// The texts on the main menu
-			_textFields = new Array(new Text('The Snake', 24, 0xFFFFFF, true), new Text('By Nayael', 10));
+			_textFields = new Vector.<Text>(2, true);
+			_textFields[0] = new Text('The Snake', 24, 0xFFFFFF, true);
+			_textFields[1] = new Text('By Nayael', 10);
 			_textFields[0].hCenter(stage);
 			_textFields[0].y = 50;
 			this.addChild(_textFields[0]);
@@ -144,16 +146,16 @@ package nayael
 			apple.graphics.endFill();
 			
 			// Randomly position the apple
-			var randomX:Number = (0 + Math.random() * ((Math.floor(stage.stageWidth / 15) - 1) * 15)),
-				randomY:Number = (0 + Math.random() * ((Math.floor(stage.stageHeight / 15) - 1) * 15)),
-				appleX:Number = Math.floor(randomX / 15) * 15,
-				appleY:Number = Math.floor(randomY / 15) * 15;
-			for (var i:int = 0; i < _snake.body.length; i++) {
+			var randomX:Number = (0 + Math.random() * ((int(stage.stageWidth / 15) - 1) * 15)),
+				randomY:Number = (0 + Math.random() * ((int(stage.stageHeight / 15) - 1) * 15)),
+				appleX:int = int(randomX / 15) * 15,
+				appleY:int = int(randomY / 15) * 15;
+			for (var i:int = 0, length:int = _snake.body.length; i < length; i++) {
 				if (_snake.body[i].hitTestPoint(appleX, appleY)) {	// If one of the bit collides with the new positions
 					randomX = (0 + Math.random() * ((Math.floor(stage.stageWidth / 15) - 1) * 15));
 					randomY = (0 + Math.random() * ((Math.floor(stage.stageHeight / 15) - 1) * 15));
-					appleX = Math.floor(randomX / 15) * 15;
-					appleY = Math.floor(randomY / 15) * 15;
+					appleX = int(randomX / 15) * 15;
+					appleY = int(randomY / 15) * 15;
 					i = 0;	// We restart the iteration, to recheck with the new coordinates
 				}
 			}

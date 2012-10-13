@@ -20,7 +20,7 @@ package nayael.characters
 		private static var instance:Snake;
 		
 		public var direction:String;
-		private var _body:Array;
+		private var _body:Vector.<Shape>;
 	
 	////////////////////////
 	// CONSTRUCTOR
@@ -41,7 +41,7 @@ package nayael.characters
 		 */
 		public function init():void {
 			direction = DOWN;
-			_body = new Array();
+			_body = new Vector.<Shape>();
 			for (var i:int = 0; i < 3; i++) {	// We create the body
 				var bit:Shape = new Shape();
 				bit.graphics.beginFill(0xFFFFFF);
@@ -125,7 +125,7 @@ package nayael.characters
 	////////////////////////
 	// GETTERS & SETTERS
 	//
-		public function get body():Array {
+		public function get body():Vector.<Shape> {
 			return _body;
 		}
 	}
